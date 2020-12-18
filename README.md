@@ -37,3 +37,33 @@ unsubscribe
 resize.off(fn)
 
 ```
+
+## Lerp
+Standart lerp function
+
+```
+import {lerp} from '@emotionagency/utils'
+
+lerp(first number, second number, interpolation value)
+
+```
+
+## Clamp
+Standart clamp function
+
+```
+import {clamp} from '@emotionagency/utils'
+
+clamp(clamping value, min value, max value)
+
+```
+
+## CreateNewElement
+A function that creates a new DOM-element with the ability to immediately assign the necessary classes to it
+
+```
+import {createNewElement} from '@emotionagency/utils'
+
+createNewElement(tag, classes)
+
+```

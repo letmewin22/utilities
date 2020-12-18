@@ -1,0 +1,1 @@
+{"version":3,"file":"createNewElement.js","sourceRoot":"","sources":["../src/createNewElement.ts"],"names":[],"mappings":";;;AAAA,MAAM,gBAAgB,GAAG,CAAC,GAAW,EAAE,OAAe,EAAe,EAAE;IACrE,MAAM,IAAI,GAAG,QAAQ,CAAC,aAAa,CAAC,GAAG,CAAC,CAAA;IACxC,IAAI,CAAC,SAAS,CAAC,GAAG,CAAC,OAAO,CAAC,CAAA;IAE3B,OAAO,IAAI,CAAA;AACb,CAAC,CAAA;AAEO,4CAAgB"}
