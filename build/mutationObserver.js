@@ -14,6 +14,7 @@ const mutationObserver = (target, outsideCallback) => {
     };
     const observer = new MutationObserver(callback);
     observer.observe(target, config);
+    return () => observer.disconnect();
 };
 exports.default = mutationObserver;
 //# sourceMappingURL=mutationObserver.js.map

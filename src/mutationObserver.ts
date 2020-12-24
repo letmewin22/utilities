@@ -6,7 +6,7 @@ type TFunc = {
 const mutationObserver = (
   target: TFunc['t'],
   outsideCallback: TFunc['cb']
-): void => {
+): (() => void) => {
   const config = {
     childList: true,
   }
@@ -22,6 +22,7 @@ const mutationObserver = (
   const observer = new MutationObserver(callback)
 
   observer.observe(target, config)
+  return () => observer.disconnect()
 }
 
 export default mutationObserver
