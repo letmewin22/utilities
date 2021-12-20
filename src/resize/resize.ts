@@ -19,7 +19,7 @@ export class Resize {
 
   init() {
     this.bounds()
-    this.debounced = debounce(this.resizeHandler, 60)
+    this.debounced = debounce(this.resizeHandler, 2000, false)
     window.addEventListener('resize', this.debounced)
   }
 
