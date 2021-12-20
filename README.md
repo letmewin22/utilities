@@ -67,3 +67,25 @@ import {createNewElement} from '@emotionagency/utils'
 createNewElement(tag, classes)
 
 ```
+
+## Delay
+A function that creates a Promise with delay
+
+```
+import {delayPromise} from '@emotionagency/utils'
+
+async delayFunc = () => {
+  await delayPromise(1000)
+  //logic
+}
+
+```
+
+## Keys Generator
+A function that generate random string by length
+```
+import {keysGenerator} from '@emotionagency/utils'
+
+const randomKey = keysGenerator(10)
+
+```

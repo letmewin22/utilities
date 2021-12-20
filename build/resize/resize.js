@@ -15,7 +15,7 @@ class Resize {
     }
     init() {
         this.bounds();
-        this.debounced = debounce_1.debounce(this.resizeHandler, 60);
+        this.debounced = (0, debounce_1.debounce)(this.resizeHandler, 60);
         window.addEventListener('resize', this.debounced);
     }
     resizeHandler() {
