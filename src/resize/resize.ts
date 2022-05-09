@@ -1,10 +1,7 @@
-import {debounce} from 'debounce'
-
 type TFunc = () => void
 
 export class Resize {
   cbArray: Array<null | TFunc>
-  debounced: TFunc
   constructor() {
     this.cbArray = []
     this.init()
@@ -19,8 +16,7 @@ export class Resize {
 
   init() {
     this.bounds()
-    this.debounced = debounce(this.resizeHandler, 2000, false)
-    window.addEventListener('resize', this.debounced)
+    window.addEventListener('resize', this.resizeHandler)
   }
 
   resizeHandler() {
