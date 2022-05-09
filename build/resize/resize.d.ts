@@ -1,7 +1,6 @@
 declare type TFunc = () => void;
 export declare class Resize {
     cbArray: Array<null | TFunc>;
-    debounced: TFunc;
     constructor();
     bounds(): void;
     init(): void;
