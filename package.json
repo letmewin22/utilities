@@ -1,10 +1,9 @@
 {
   "name": "@emotionagency/utils",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Useful utilities from the emotion-agency",
   "main": "build/index.js",
   "types": "build/src/index.d.ts",
-  "type": "module",
   "files": [
     "build"
   ],
