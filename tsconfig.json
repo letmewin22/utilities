@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "outDir": "build",
-    "target": "ES6",
+    "target": "ESNext",
+    "module": "ESNext",
     "lib": ["DOM","DOM.Iterable","ES2015", "ESNext", "ScriptHost"],
     "noImplicitAny": false,
     // "strictNullChecks": true,
     "noUnusedLocals": true, 
     "sourceMap": true,
-    "module": "commonjs",
     "allowJs": true,
     "checkJs": false,
     "allowSyntheticDefaultImports": true,

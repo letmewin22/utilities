@@ -5,15 +5,10 @@ function createConfig(env) {
   const webpackConfig = {
     mode: 'production',
     entry: path.resolve(__dirname, './src/index.ts'),
-    experiments: {
-      outputModule: true,
-    },
     output: {
       filename: 'index.js',
       path: path.resolve(__dirname, 'build'),
-      library: {
-        type: 'module',
-      },
+      libraryTarget: 'umd',
       clean: true,
     },
     resolve: {
