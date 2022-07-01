@@ -16,7 +16,9 @@ export class Resize {
 
   init() {
     this.bounds()
-    window.addEventListener('resize', this.resizeHandler)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', this.resizeHandler)
+    }
   }
 
   resizeHandler() {
@@ -33,7 +35,9 @@ export class Resize {
   }
 
   destroy() {
-    window.removeEventListener('resize', this.resizeHandler)
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.resizeHandler)
+    }
   }
 }
 

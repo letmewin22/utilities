@@ -17,7 +17,10 @@ export class RAF {
 
   animation(): void {
     this.cbArray.forEach(cb => cb())
-    requestAnimationFrame(this.animation.bind(this))
+
+    if (typeof window !== 'undefined') {
+      window.requestAnimationFrame(this.animation.bind(this))
+    }
   }
 }
 
