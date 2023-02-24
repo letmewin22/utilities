@@ -1,9 +1,14 @@
+import {getWindow} from 'ssr-window'
+
 type TFunc = () => void
+
+const window = getWindow()
 
 export class RAF {
   cbArray: Array<null | TFunc>
   constructor() {
     this.cbArray = []
+    this.animation = this.animation.bind(this)
     this.animation()
   }
 
@@ -17,10 +22,7 @@ export class RAF {
 
   animation(): void {
     this.cbArray.forEach(cb => cb())
-
-    if (typeof window !== 'undefined') {
-      window.requestAnimationFrame(this.animation.bind(this))
-    }
+    window.requestAnimationFrame(this.animation)
   }
 }
 
