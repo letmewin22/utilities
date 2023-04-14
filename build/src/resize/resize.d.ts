@@ -7,10 +7,13 @@ export declare class Resize {
     resizeHandler(): void;
     on(cb: TFunc): void;
     off(cb: TFunc): void;
+    match(breakpoint: string, cb: TFunc): void;
     destroy(): void;
 }
 export declare const resize: {
     on: (cb: TFunc) => void;
     off: (cb: TFunc) => void;
+    match: (breakpoint: string, cb: TFunc) => void;
+    destroy: () => void;
 };
 export {};

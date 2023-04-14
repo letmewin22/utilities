@@ -38,6 +38,32 @@ export class Resize {
     this.cbArray = this.cbArray.filter(e => e !== cb)
   }
 
+  match(breakpoint: string, cb: TFunc): void {
+    let mediaQuery: string
+
+    if (breakpoint.startsWith('<')) {
+      const value = breakpoint.slice(1)
+      mediaQuery = `(max-width: ${value})`
+    } else if (breakpoint.startsWith('>')) {
+      const value = breakpoint.slice(1)
+      mediaQuery = `(min-width: ${value})`
+    } else {
+      mediaQuery = `(min-width: ${breakpoint})`
+    }
+
+    const mql = window.matchMedia(mediaQuery)
+
+    if (mql.matches) {
+      cb()
+    }
+
+    mql.onchange = () => {
+      if (mql.matches) {
+        cb()
+      }
+    }
+  }
+
   destroy() {
     if (typeof window !== 'undefined') {
       window.removeEventListener('resize', this.resizeHandler)
@@ -50,4 +76,7 @@ const resizeInstance = new Resize()
 export const resize = {
   on: (cb: TFunc): void => resizeInstance.on(cb),
   off: (cb: TFunc): void => resizeInstance.off(cb),
+  match: (breakpoint: string, cb: TFunc): void =>
+    resizeInstance.match(breakpoint, cb),
+  destroy: (): void => resizeInstance.destroy(),
 }
