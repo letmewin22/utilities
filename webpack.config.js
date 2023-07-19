@@ -10,6 +10,8 @@ function createConfig(env) {
       path: path.resolve(__dirname, 'build'),
       libraryTarget: 'umd',
       clean: true,
+      library: '@emotion-agency/utils',
+      globalObject: 'this',
     },
     resolve: {
       extensions: ['.js', '.ts'],
@@ -19,7 +21,7 @@ function createConfig(env) {
         {
           test: /\.(js|jsx|tsx|ts)$/,
           use: ['ts-loader'],
-          exclude: ['/node_modules/', /.test.*/gm],
+          exclude: [path.resolve(__dirname, 'node_modules'), /.test.*/gm],
         },
       ],
     },
