@@ -4,10 +4,10 @@ const path = require('path')
 function createConfig(env) {
   const webpackConfig = {
     mode: 'production',
-    entry: path.resolve(__dirname, './src/index.ts'),
+    entry: path.resolve(__dirname, 'src/index.ts'),
     output: {
       filename: 'index.js',
-      path: path.resolve(__dirname, 'build'),
+      path: path.resolve(__dirname, 'dist'),
       libraryTarget: 'umd',
       clean: true,
       library: '@emotion-agency/utils',
@@ -21,7 +21,7 @@ function createConfig(env) {
         {
           test: /\.(js|jsx|tsx|ts)$/,
           use: ['ts-loader'],
-          exclude: [path.resolve(__dirname, 'node_modules'), /.test.*/gm],
+          exclude: path.resolve(__dirname, 'node_modules'),
         },
       ],
     },

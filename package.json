@@ -1,11 +1,11 @@
 {
   "name": "@emotionagency/utils",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Useful utilities from the emotion-agency",
-  "main": "build/index.js",
-  "types": "build/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
-    "build"
+    "dist"
   ],
   "scripts": {
     "build": "webpack",

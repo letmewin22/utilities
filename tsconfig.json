@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "build",
-    "target": "ESNext",
-    "module": "ESNext",
+    "outDir": "dist",
+    "target": "ES6",
     "lib": ["DOM","DOM.Iterable","ES2015", "ESNext", "ScriptHost"],
     "noImplicitAny": false,
     // "strictNullChecks": true,
@@ -12,11 +11,12 @@
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true, 
+    "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "types": ["node", "jest"],
+    "types": ["node"],
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -41,7 +41,6 @@
     "**/*.d.ts",
     "webpack.cofing.js",
     "**/*.test.ts",
-    "./libs/*",
-    "gulp"
+    "./libs/*"
   ]
 }
