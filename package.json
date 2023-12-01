@@ -1,9 +1,8 @@
 {
   "name": "@emotionagency/utils",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Useful utilities from the emotion-agency",
   "main": "dist/index.js",
-  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
