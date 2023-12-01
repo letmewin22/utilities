@@ -11,8 +11,6 @@ function createConfig(env) {
       libraryTarget: 'umd',
       clean: true,
       library: '[name]',
-      umdNamedDefine: true,
-      globalObject: 'this',
     },
     resolve: {
       extensions: ['.js', '.ts'],
@@ -22,7 +20,7 @@ function createConfig(env) {
         {
           test: /\.(js|jsx|tsx|ts)$/,
           use: ['ts-loader'],
-          exclude: path.resolve(__dirname, 'node_modules'),
+          exclude: /node_modules/,
         },
       ],
     },
