@@ -1,6 +1,6 @@
 import {getWindow} from 'ssr-window'
 
-type TFunc = () => void
+type TFunc = (...args: any) => void
 
 const window = getWindow()
 
@@ -9,7 +9,7 @@ export class RAF {
   constructor() {
     this.cbArray = []
     this.animation = this.animation.bind(this)
-    this.animation()
+    this.animation(0)
   }
 
   on(cb: TFunc): void {
@@ -20,8 +20,8 @@ export class RAF {
     this.cbArray = this.cbArray.filter(e => e !== cb)
   }
 
-  animation(): void {
-    this.cbArray.forEach(cb => cb())
+  animation(delta: number): void {
+    this.cbArray.forEach(cb => cb(delta))
     window.requestAnimationFrame(this.animation)
   }
 }
