@@ -73,10 +73,12 @@ export class Resize {
 
 const resizeInstance = new Resize()
 
-export const resize = {
+const resizeFunc = {
   on: (cb: TFunc): void => resizeInstance.on(cb),
   off: (cb: TFunc): void => resizeInstance.off(cb),
   match: (breakpoint: string, cb: TFunc): void =>
     resizeInstance.match(breakpoint, cb),
   destroy: (): void => resizeInstance.destroy(),
 }
+
+export default resizeFunc

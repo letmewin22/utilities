@@ -1,4 +1,4 @@
-declare type TFunc = (...args: any) => void;
+type TFunc = (...args: any) => void;
 export declare class RAF {
     cbArray: Array<null | TFunc>;
     constructor();
@@ -6,8 +6,8 @@ export declare class RAF {
     off(cb: TFunc): void;
     animation(delta: number): void;
 }
-export declare const raf: {
+declare const rafFunc: {
     on: (cb: TFunc) => void;
     off: (cb: TFunc) => void;
 };
-export {};
+export default rafFunc;

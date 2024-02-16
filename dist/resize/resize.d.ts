@@ -1,4 +1,4 @@
-declare type TFunc = () => void;
+type TFunc = () => void;
 export declare class Resize {
     cbArray: Array<null | TFunc>;
     constructor();
@@ -10,10 +10,10 @@ export declare class Resize {
     match(breakpoint: string, cb: TFunc): void;
     destroy(): void;
 }
-export declare const resize: {
+declare const resizeFunc: {
     on: (cb: TFunc) => void;
     off: (cb: TFunc) => void;
     match: (breakpoint: string, cb: TFunc) => void;
     destroy: () => void;
 };
-export {};
+export default resizeFunc;

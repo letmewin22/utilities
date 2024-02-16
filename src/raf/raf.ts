@@ -28,7 +28,9 @@ export class RAF {
 
 const RAFInstance = new RAF()
 
-export const raf = {
+const rafFunc = {
   on: (cb: TFunc): void => RAFInstance.on(cb),
   off: (cb: TFunc): void => RAFInstance.off(cb),
 }
+
+export default rafFunc

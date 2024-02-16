@@ -9,7 +9,7 @@ interface IMove {
   z: number | string
 }
 
-interface IParams {
+export interface IParams {
   scale?: IScale
   move?: IMove
 }

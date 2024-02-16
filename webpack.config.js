@@ -10,7 +10,7 @@ function createConfig(env) {
       path: path.resolve(__dirname, 'dist'),
       libraryTarget: 'umd',
       clean: true,
-      library: '@emotion-agency/utils',
+      library: '@emotionagency/utils',
       globalObject: 'this',
     },
     resolve: {
