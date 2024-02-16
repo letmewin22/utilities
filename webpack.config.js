@@ -11,6 +11,8 @@ function createConfig(env) {
       libraryTarget: 'umd',
       clean: true,
       library: '[name]',
+      umdNamedDefine: true,
+      globalObject: 'this',
     },
     resolve: {
       extensions: ['.js', '.ts'],
