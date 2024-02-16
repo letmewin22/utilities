@@ -1,4 +1,4 @@
-import {getWindow} from 'ssr-window'
+import {getWindow} from '../window-ssr'
 
 type TFunc = (...args: any) => void
 

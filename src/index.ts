@@ -1,18 +1,7 @@
-import {raf} from './raf/raf'
-import {resize} from './resize/resize'
-import {clamp, lerp} from './math'
-import {createNewElement} from './createNewElement'
-import {matrixTransform} from './matrixTransform'
-import {delayPromise} from './delay'
-import {keysGenerator} from './keysGenerator'
-
-export {
-  raf,
-  resize,
-  clamp,
-  lerp,
-  createNewElement,
-  matrixTransform,
-  delayPromise,
-  keysGenerator,
-}
+export {raf} from './raf/raf'
+export {resize} from './resize/resize'
+export {clamp, lerp} from './math'
+export {createNewElement} from './createNewElement'
+export {matrixTransform} from './matrixTransform'
+export {delayPromise} from './delay'
+export {keysGenerator} from './keysGenerator'

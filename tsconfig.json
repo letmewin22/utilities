@@ -4,14 +4,13 @@
     "target": "ES6",
     "lib": ["DOM","DOM.Iterable","ES2015", "ESNext", "ScriptHost"],
     "noImplicitAny": false,
-    // "strictNullChecks": true,
     "noUnusedLocals": true, 
     "sourceMap": true,
     "allowJs": true,
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true, 
-    "module": "UMD",
+    "module": "commonjs",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -22,15 +21,6 @@
     ],
     "declaration": true,
     "downlevelIteration": true,
-    "baseUrl": "src/js",
-    "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@core/*": [
-        "./core/*"
-      ]
-    }
   },
   "baseUrl": "/src/js",
   "include": [
