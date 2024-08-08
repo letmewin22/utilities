@@ -1,4 +1,8 @@
+import { getWindow } from '../window-ssr'
+
 type TFunc = (...args: any) => void
+
+const window = getWindow()
 
 export class RAF {
   cbArray: Array<null | TFunc>
