@@ -9,6 +9,7 @@ declare const exportObj: {
     raf: {
         on: (cb: (...args: any) => void) => void;
         off: (cb: (...args: any) => void) => void;
+        destroy: () => void;
     };
     resize: {
         on: (cb: () => void) => void;

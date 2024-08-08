@@ -1,8 +1,4 @@
-import {getWindow} from '../window-ssr'
-
 type TFunc = () => void
-
-const window = getWindow()
 
 export class Resize {
   cbArray: Array<null | TFunc>
