@@ -1,4 +1,4 @@
-import { getWindow } from '../window-ssr'
+import {getWindow} from '../window-ssr'
 
 type TFunc = (...args: any) => void
 
@@ -7,6 +7,7 @@ const window = getWindow()
 export class RAF {
   cbArray: Array<null | TFunc>
   raf: number
+  lastTime = performance.now()
   constructor() {
     this.cbArray = []
     this.animation = this.animation.bind(this)
@@ -21,8 +22,12 @@ export class RAF {
     this.cbArray = this.cbArray.filter(e => e !== cb)
   }
 
-  animation(delta: number): void {
-    this.cbArray.forEach(cb => cb(delta))
+  animation(time: number): void {
+    const now = performance.now()
+    const delta = now - this.lastTime
+    this.lastTime = now
+
+    this.cbArray.forEach(cb => cb(time, delta))
     if (window) {
       this.raf = window.requestAnimationFrame(this.animation)
     }
