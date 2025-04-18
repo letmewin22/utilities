@@ -11,7 +11,6 @@ export default defineConfig({
     },
     outDir: 'dist',
     reportCompressedSize: true,
-
     emptyOutDir: true,
   },
   resolve: {
