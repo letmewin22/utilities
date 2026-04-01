@@ -1,12 +1,12 @@
 var y = Object.defineProperty;
-var A = (t, e, n) => e in t ? y(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
-var o = (t, e, n) => A(t, typeof e != "symbol" ? e + "" : e, n);
-function u(t) {
+var p = (t, e, n) => e in t ? y(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
+var o = (t, e, n) => p(t, typeof e != "symbol" ? e + "" : e, n);
+function m(t) {
   return t !== null && typeof t == "object" && "constructor" in t && t.constructor === Object;
 }
-function m(t = {}, e = {}) {
+function h(t = {}, e = {}) {
   Object.keys(e).forEach((n) => {
-    typeof t[n] > "u" ? t[n] = e[n] : u(e[n]) && u(t[n]) && Object.keys(e[n]).length > 0 && m(t[n], e[n]);
+    typeof t[n] > "u" ? t[n] = e[n] : m(e[n]) && m(t[n]) && Object.keys(e[n]).length > 0 && h(t[n], e[n]);
   });
 }
 const l = {
@@ -64,9 +64,9 @@ const l = {
     search: ""
   }
 };
-function p() {
+function A() {
   const t = typeof document < "u" ? document : {};
-  return m(t, l), t;
+  return h(t, l), t;
 }
 const v = {
   document: l,
@@ -128,13 +128,13 @@ const v = {
 };
 function d() {
   const t = typeof window < "u" ? window : {};
-  return m(t, v), t;
+  return h(t, v), t;
 }
 const a = d();
 class w {
   constructor() {
     o(this, "cbArray");
-    o(this, "raf");
+    o(this, "raf", 0);
     o(this, "lastTime", performance.now());
     this.cbArray = [], this.animation = this.animation.bind(this), this.animation(0);
   }
@@ -145,17 +145,17 @@ class w {
     this.cbArray = this.cbArray.filter((n) => n !== e);
   }
   animation(e) {
-    const n = performance.now(), r = n - this.lastTime;
-    this.lastTime = n, this.cbArray.forEach((s) => s(e, r)), a && (this.raf = a.requestAnimationFrame(this.animation));
+    const n = performance.now(), s = n - this.lastTime;
+    this.lastTime = n, this.cbArray.forEach((r) => r == null ? void 0 : r(e, s)), a && (this.raf = a.requestAnimationFrame(this.animation));
   }
   destroy() {
     a && a.cancelAnimationFrame(this.raf), this.cbArray = [];
   }
 }
-const h = new w(), z = {
-  on: (t) => h.on(t),
-  off: (t) => h.off(t),
-  destroy: () => h.destroy()
+const u = new w(), b = {
+  on: (t) => u.on(t),
+  off: (t) => u.off(t),
+  destroy: () => u.destroy()
 }, i = d();
 class E {
   constructor() {
@@ -163,15 +163,13 @@ class E {
     this.cbArray = [], this.init();
   }
   bounds() {
-    ["resizeHandler"].forEach((n) => {
-      this[n] = this[n].bind(this);
-    });
+    this.resizeHandler = this.resizeHandler.bind(this);
   }
   init() {
     this.bounds(), typeof i < "u" && i.addEventListener("resize", this.resizeHandler);
   }
   resizeHandler() {
-    this.cbArray.forEach((e) => e());
+    this.cbArray.forEach((e) => e == null ? void 0 : e());
   }
   on(e) {
     e(), this.cbArray.push(e);
@@ -180,54 +178,66 @@ class E {
     this.cbArray = this.cbArray.filter((n) => n !== e);
   }
   match(e, n) {
-    let r;
-    e.startsWith("<") ? r = `(max-width: ${e.slice(1)})` : e.startsWith(">") ? r = `(min-width: ${e.slice(1)})` : r = `(min-width: ${e})`;
-    const s = i.matchMedia(r);
-    s.matches && n(), s.onchange = () => {
-      s.matches && n();
+    let s;
+    e.startsWith("<") ? s = `(max-width: ${e.slice(1)})` : e.startsWith(">") ? s = `(min-width: ${e.slice(1)})` : s = `(min-width: ${e})`;
+    const r = i.matchMedia(s);
+    r.matches && n(), r.onchange = () => {
+      r.matches && n();
     };
   }
   destroy() {
     typeof i < "u" && i.removeEventListener("resize", this.resizeHandler);
   }
 }
-const c = new E(), x = {
+const c = new E(), $ = {
   on: (t) => c.on(t),
   off: (t) => c.off(t),
   match: (t, e) => c.match(t, e),
   destroy: () => c.destroy()
-}, $ = (t, e, n) => t * (1 - n) + e * n, F = (t, e, n) => Math.max(Math.min(t, Math.max(e, n)), Math.min(e, n)), b = p(), L = (t, e) => {
-  const n = b.createElement(t);
+}, g = (t, e, n) => t * (1 - n) + e * n, M = (t, e, n) => Math.max(Math.min(t, Math.max(e, n)), Math.min(e, n));
+function F(t, e, n, s) {
+  return g(t, e, 1 - Math.exp(-n * s));
+}
+function L(t, e) {
+  return (t % e + e) % e;
+}
+const z = A(), T = (t, e) => {
+  const n = z.createElement(t);
   return n.classList.add(e), n;
-}, M = (t = {}) => {
+}, N = (t = {}) => {
   const e = {
     scale: t.scale ?? { x: 1, y: 1 },
     move: t.move ?? { x: 0, y: 0, z: 0 }
-  }, n = Object.keys(e).map((r) => typeof e[r] == "string" || typeof e[r] == "number" ? { x: e[r], y: e[r], z: e[r] } : e[r]);
+  }, n = Object.keys(e).map((s) => {
+    const r = e[s];
+    return typeof r == "string" || typeof r == "number" ? { x: r, y: r, z: r } : r;
+  });
   return `matrix3d(
     ${n[0].x ?? 1},0,0,0,
     0,${n[0].y ?? 1},0,0,
     0,0,1,0,
     ${n[1].x ?? 0},${n[1].y ?? 0},${n[1].z ?? 0},1
     )`;
-}, T = (t = 0) => new Promise((e) => {
+}, S = (t = 0) => new Promise((e) => {
   setTimeout(() => {
     e();
   }, t);
-}), N = (t) => {
+}), q = (t) => {
   let e = "";
-  const n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", r = n.length;
-  for (let s = 0; s < t; s++)
-    e += n.charAt(Math.floor(Math.random() * r));
+  const n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", s = n.length;
+  for (let r = 0; r < t; r++)
+    e += n.charAt(Math.floor(Math.random() * s));
   return e;
 };
 export {
-  F as clamp,
-  L as createNewElement,
-  T as delayPromise,
-  N as keysGenerator,
-  $ as lerp,
-  M as matrixTransform,
-  z as raf,
-  x as resize
+  M as clamp,
+  T as createNewElement,
+  F as damp,
+  S as delayPromise,
+  q as keysGenerator,
+  g as lerp,
+  N as matrixTransform,
+  L as modulo,
+  b as raf,
+  $ as resize
 };

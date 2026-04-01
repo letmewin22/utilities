@@ -1,6 +1,6 @@
 Useful utilities from the emotion-agency
 
-# Instalation
+# Installation
 
 `npm i @emotionagency/utils`
 
@@ -13,13 +13,16 @@ or
 ## Raf
 Custom wrapper around standard API of requestAnimationFrame to optimize performance
 
-```
+```js
 import {raf} from '@emotionagency/utils'
 
-\\ subscribe
-raf.on(fn)
+// subscribe
+raf.on((time, deltaTime) => {
+  // time - current timestamp
+  // deltaTime - time since last frame
+})
 
-unsubscribe
+// unsubscribe
 raf.off(fn)
 
 ```
@@ -27,65 +30,81 @@ raf.off(fn)
 ## Resize
 Custom wrapper around standard API of resize event with debounce function to optimize performance
 
-```
+```js
 import {resize} from '@emotionagency/utils'
 
-\\ subscribe
+// subscribe
 resize.on(fn)
 
-unsubscribe
+// unsubscribe
 resize.off(fn)
 
 ```
 
 ## Lerp
-Standart lerp function
+Standard lerp (linear interpolation) function
 
-```
+```js
 import {lerp} from '@emotionagency/utils'
 
-lerp(first number, second number, interpolation value)
-
+lerp(start, end, interpolation)
 ```
 
 ## Clamp
-Standart clamp function
+Standard clamp function
 
-```
+```js
 import {clamp} from '@emotionagency/utils'
 
-clamp(clamping value, min value, max value)
+clamp(value, min, max)
+```
 
+## Damp
+Frame-rate independent damping using exponential decay. Useful for smooth animations that behave consistently regardless of frame rate.
+
+```js
+import {damp} from '@emotionagency/utils'
+
+damp(current, target, lambda, deltaTime)
+// lambda - damping strength (higher = faster)
+// deltaTime - time since last frame
+```
+
+## Modulo
+Proper modulo function that handles negative numbers correctly. Unlike the `%` operator, always returns a value in the range `[0, divisor)`.
+
+```js
+import {modulo} from '@emotionagency/utils'
+
+modulo(5, 3)   // 2
+modulo(-1, 3)  // 2  (% would return -1)
 ```
 
 ## CreateNewElement
 A function that creates a new DOM-element with the ability to immediately assign the necessary classes to it
 
-```
+```js
 import {createNewElement} from '@emotionagency/utils'
 
 createNewElement(tag, classes)
-
 ```
 
 ## Delay
 A function that creates a Promise with delay
 
-```
+```js
 import {delayPromise} from '@emotionagency/utils'
 
-async delayFunc = () => {
+const delayFunc = async () => {
   await delayPromise(1000)
-  //logic
+  // logic
 }
-
 ```
 
 ## Keys Generator
-A function that generate random string by length
-```
+A function that generates a random string by length
+```js
 import {keysGenerator} from '@emotionagency/utils'
 
 const randomKey = keysGenerator(10)
-
 ```

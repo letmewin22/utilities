@@ -6,7 +6,7 @@ const window = getWindow()
 
 export class RAF {
   cbArray: Array<null | TFunc>
-  raf: number
+  raf = 0
   lastTime = performance.now()
   constructor() {
     this.cbArray = []
@@ -27,7 +27,7 @@ export class RAF {
     const delta = now - this.lastTime
     this.lastTime = now
 
-    this.cbArray.forEach(cb => cb(time, delta))
+    this.cbArray.forEach(cb => cb?.(time, delta))
     if (window) {
       this.raf = window.requestAnimationFrame(this.animation)
     }

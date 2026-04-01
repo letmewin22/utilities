@@ -12,10 +12,7 @@ export class Resize {
   }
 
   bounds() {
-    const methods = ['resizeHandler']
-    methods.forEach(fn => {
-      this[fn] = this[fn].bind(this)
-    })
+    this.resizeHandler = this.resizeHandler.bind(this)
   }
 
   init() {
@@ -26,7 +23,7 @@ export class Resize {
   }
 
   resizeHandler() {
-    this.cbArray.forEach(cb => cb())
+    this.cbArray.forEach(cb => cb?.())
   }
 
   on(cb: TFunc): void {

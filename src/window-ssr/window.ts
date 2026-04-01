@@ -42,10 +42,10 @@ const ssrWindow = {
   matchMedia() {
     return {}
   },
-  requestAnimationFrame(callback) {
-    return callback
+  requestAnimationFrame(callback: FrameRequestCallback) {
+    return callback as unknown as number
   },
-  cancelAnimationFrame(id) {
+  cancelAnimationFrame(id: number) {
     return id
   },
 }

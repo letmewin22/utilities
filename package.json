@@ -21,15 +21,21 @@
     "build": "vite build && npm run type:build",
     "pub": "npm run build && npm version patch && npm publish"
   },
+  "sideEffects": false,
   "keywords": [
     "js",
     "utilities",
     "javascript",
+    "typescript",
     "requestAnimationFrame",
     "resize",
     "raf",
     "clamp",
-    "lerp"
+    "lerp",
+    "damp",
+    "modulo",
+    "math",
+    "ssr"
   ],
   "repository": {
     "type": "git",

@@ -6,21 +6,21 @@ declare const ssrDocument: {
         blur(): void;
         nodeName: string;
     };
-    querySelector(): any;
-    querySelectorAll(): any[];
-    getElementById(): any;
+    querySelector(): null;
+    querySelectorAll(): never[];
+    getElementById(): null;
     createEvent(): {
         initEvent(): void;
     };
     createElement(): {
-        children: any[];
-        childNodes: any[];
+        children: never[];
+        childNodes: never[];
         style: {};
         setAttribute(): void;
-        getElementsByTagName(): any[];
+        getElementsByTagName(): never[];
     };
     createElementNS(): {};
-    importNode(): any;
+    importNode(): null;
     location: {
         hash: string;
         host: string;

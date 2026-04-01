@@ -1,6 +1,7 @@
 interface IScale {
   x: number | string
   y: number | string
+  z?: number | string
 }
 
 interface IMove {
@@ -15,17 +16,18 @@ export interface IParams {
 }
 
 export const matrixTransform = (params: IParams = {}) => {
-  const def = {
+  const def: Record<string, IScale | IMove> = {
     scale: params.scale ?? {x: 1, y: 1},
     move: params.move ?? {x: 0, y: 0, z: 0},
   }
 
   const p = Object.keys(def).map(key => {
-    if (typeof def[key] === 'string' || typeof def[key] === 'number') {
-      return {x: def[key], y: def[key], z: def[key]}
+    const val = def[key]
+    if (typeof val === 'string' || typeof val === 'number') {
+      return {x: val, y: val, z: val}
     }
 
-    return def[key]
+    return val
   })
 
   return `matrix3d(

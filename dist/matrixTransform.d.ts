@@ -1,6 +1,7 @@
 interface IScale {
     x: number | string;
     y: number | string;
+    z?: number | string;
 }
 interface IMove {
     x: number | string;
